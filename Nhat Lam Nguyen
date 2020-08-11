@@ -1,0 +1,32 @@
+#include <Servo.h> // thu vien 
+
+Servo servo1,servo2,servo3; // khai bao bien thuoc kieu servo
+int bientro1 = A0;  // khai bao chan bien tro
+int bientro2 = A1;
+int bientro3 = A2;
+int servopin1 = 9; // khai bao chan out data for servo
+int servopin2 = 10;
+int servopin3 = 11;
+
+void setup()
+{
+  servo1.attach(servopin1);
+  servo2.attach(servopin2);
+  servo3.attach(servopin3);
+}
+void loop()
+{
+  int value1 = analogRead(bientro1); //doc gia tri tu cam bien
+  int value2 = analogRead(bientro2);
+  int value3 = analogRead(bientro3);
+
+  int pos1 = map(value1,0,1023,0,180); // chuyen doi
+  int pos2 = map(value2,0,1023,0,180);
+  int pos3 = map(value3,0,1023,0,180);
+
+  servo1.write(pos1);
+  servo2.write(pos2);
+  servo3.write(pos3);
+  delay(100);
+}
+
