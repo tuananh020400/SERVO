@@ -1,0 +1,42 @@
+#include <Servo.h>// thu vien dieu khien servo
+Servo myservo0 ,myservo1 ,myservo2;// khai bao doi tuong my servo dieu khien servo
+int bientro0 = A0;//cac chan ADC
+int bientro1 = A1;//cac chan ADC
+int bientro2 = A2;//cac chan ADC
+
+int servoPin0=9;//khai bao chan dieu khien servo
+int servoPin1=10;
+int servoPin2=11;
+void setup()
+{
+  //cai dat chuc nang dieu khien servo cho cac chan 9 10 11
+  myservo0.attach(9);
+  myservo1.attach(10);
+  myservo2.attach(11);
+  
+  Serial.begin(9600);// mo giao tiep Serial tai baudrate 9600
+}
+void loop()
+{
+  int value0 = analogRead(A0);// doc gia tri Analog
+  int value1 = analogRead(A1);
+  int value2 = analogRead(A2);
+  
+  
+  int servoPos0= map(value0, 0,1023,0,180);// ham map chuyen doi gia tri analog(0-1023) sang gia tri do (0-180)
+  int servoPos1= map(value1, 0,1023,0,180);
+  int servoPos2= map(value2, 0,1023,0,180);
+ 
+  // cho servo quay 1 goc servoPos do
+  myservo0.write(servoPos0);
+  Serial.println(servoPos0);
+  delay(100);
+  
+   myservo1.write(servoPos1);
+  Serial.println(servoPos1);
+  delay(100);
+  
+   myservo2.write(servoPos2);
+  Serial.println(servoPos2);
+  delay(100);
+}
