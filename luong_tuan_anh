@@ -1,0 +1,42 @@
+#include <Servo.h>
+Servo servo1;
+Servo servo2;
+Servo servo3;
+Servo servo4;
+
+
+int bientro1 = 0;
+int bientro2 = 1;
+int bientro3 = 2;
+int bientro4 = 3;
+int servopin1 = 5;
+int servopin2 = 6;
+int servopin3 = 9;
+int servopin4 = 10;
+void setup() {
+  servo1.attach(servopin1);
+  servo2.attach(servopin2);
+  servo3.attach(servopin3);
+  servo4.attach(servopin4);
+  
+
+}
+
+void loop() {
+  int valuapot1 = analogRead(bientro1);
+  int valuaservo1 = map(valuapot1,0,1023,0,180);
+  servo1.write(valuaservo1);
+
+  int valuapot2 = analogRead(bientro2);
+  int valuaservo2 = map(valuapot2,0,1023,0,180);
+  servo2.write(valuaservo2);
+
+  int valuapot3 = analogRead(bientro3);
+  int valuaservo3 = map(valuapot3,0,1023,0,180);
+  servo3.write(valuaservo3);
+
+  int valuapot4 = analogRead(bientro4);
+  int valuaservo4 = map(valuapot4,0,1023,0,180);
+  servo4.write(valuaservo4);
+
+}
